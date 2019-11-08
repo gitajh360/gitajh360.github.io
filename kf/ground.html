@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		 <script src="js/jquery-2.1.0.js"></script>
+		<title></title>
+		<style>
+			body{margin: 0;}
+		#left{width: 20%;
+		float: left;	
+		}
+		.comments {width: 99%; /*自动适应父布局宽度*/overflow: hidden;word-break: break-all;}	
+		#wind{width: 80%;height: 100%;float: left;}
+		#header{width: 100%;height: 8vh;background-color: dodgerblue;}
+		#message {width: 100%;height: 61vh;background-color: azure;overflow-y: scroll;}
+		.contact{text-align:center;width: 100%;line-height: 40px;background-color: darkblue;color: white;font-size: 20px;font-weight: 600;border-bottom: 1px #ccc solid;}	
+		#input{width: 100%;height: 20vh;background-color: azure;overflow: hidden;}
+		#more{height: 7vh;float: left;}
+		#send{float: right;margin-right:20px;width: 60px;line-height: 7vh; text-align: center;border-radius: 6px;background-color: #90EE90;}
+		#close{float: right;margin-right:20px;width: 80px;line-height: 7vh; text-align: center;border-radius: 6px;background-color: #90EE90;}
+		.on{background-color:red!important;}
+		.kf{margin:10px 10px 10px 30vw;}
+		.kh{margin:10px 30vw 10px 10px;}
+		.kf,.kh{box-shadow:-2px 2px 2px #A9A9A9 ;}
+		.kf{background-color: greenyellow;padding: 6px;border-radius: 3px;}
+		.kh{background-color: wheat;padding: 6px;border-radius: 3px;}
+		.kai{background-color: darkolivegreen!important;}
+		</style>
+	</head>
+	<body>
+	<div id="left">
+		<div class="contact">正在获取列表</div>
+		
+	</div>	
+	<div id="wind">
+		<div id="header"></div>
+		<div id="message">
+		<div id="text">
+		<div class="kf" align="right">现在座席比较繁忙，请等待</div>
+		<div class="kh" align="left">现在座席比较繁忙，请等待</div>
+		</div>		
+		</div>
+		<div id="input">
+		<textarea cols="120" rows="50" id="msg" name="m" class="comments"></textarea>
+		</div>
+		<div id="zt">
+			<div id="more"></div>
+    	<div id="send" class="no">发送</div>
+    	<div id="close">关闭会话</div>
+		</div>
+		
+	</div>	
+		
+		
+	</body>
+<script>
+var now = ""
+var member = {};
+
+
+function isInArray(arr,value){
+    for(var i = 0; i < arr.length; i++){
+        if(value === arr[i]){
+            return true;
+        }
+    }
+return false;
+}
+var ts =3000;
+
+
+var t = setInterval(function(){
+	$.ajax({
+		type:"get",
+		url:"kfzx.js",
+		async:false,
+		cache:false,
+		success:function(data){
+		data = JSON.parse(data);
+	document.getElementById("left").innerHTML ='<div class="contact">联系人列表</div>';
+		for(bl in data){
+			if(data[bl]!=false){
+
+				if(data[bl]==now){document.getElementById("left").innerHTML +='<div name="hh" class="contact kai" id="'+data[bl]+'">'+data[bl]+'</div>';}else{
+			document.getElementById("left").innerHTML +='<div name="hh" class="contact" id="'+data[bl]+'">'+data[bl]+'</div>';			
+	
+			}
+			}
+			
+			
+			if(document.getElementById("left").innerHTML==""){
+				document.getElementById("left").innerHTML='<div class="contact">联系人列表</div>';
+			}
+		}
+		member = data;
+		}
+	});
+
+},ts);
+
+
+
+
+
+
+function allajax(){
+for(i in member){
+	sss=member[i];
+	if(sss!=false){
+function hh(sss){	$.ajax({
+		type:"get",
+		url:sss+".js",
+		async:true,
+		cache:false,
+		success:function(data){		
+	data = JSON.parse(data);
+		if(window["x"+sss]==undefined){window["x"+sss]={};}	
+	
+	if(window["x"+sss].length==data.length)
+	{
+	if(window["t"+sss]==true){
+document.getElementById(sss).className="contact on";	
+}
+	}else{
+		
+	window["x"+sss]=data;
+	if(now == sss){
+			document.getElementById("text").innerHTML ="";
+			document.getElementById("header").innerHTML = "IP地址："+data[0][3]+"|联系人："+data[0][4]+"|token:"+data[0][1];
+		for(a in data){
+	if(data[a][0]=="kf"){
+		var date = new Date(data[a][2]*1000);
+						date_time =  date.getHours() + ':'+date.getMinutes() ;
+		document.getElementById("text").innerHTML +='<div class="kf" align="right">'+data[a][5]+'<br>'+date_time+'</div>';
+	}else{
+		var date = new Date(data[a][2]*1000);
+						date_time =  date.getHours() + ':'+date.getMinutes() ;
+		document.getElementById("text").innerHTML +='<div class="kh" align="left">'+data[a][5]+'<br>'+date_time+'</div>';
+	}
+	}
+	}else{
+	window["t"+sss]=true;
+	if(window["t"+sss]==true){
+document.getElementById(sss).className="contact on";	
+}
+	}
+
+	}	
+	
+	$("#message").scrollTop($("#message")[0].scrollHeight);
+	
+		}});
+	}
+	hh(sss);
+}
+}
+
+tts = setTimeout("allajax()",3000);
+}
+
+var star = false;
+
+	
+document.getElementById("left").onclick = function(event){
+if(event.target.getAttribute("name")=="hh"){
+event.target.className="contact kai";
+now = event.target.innerHTML;
+window["t"+now]=false;
+$.ajax({
+type:"get",
+url:now+".js",
+async:true,
+cache:false,
+success:function(data){
+	data =JSON.parse(data);
+	document.getElementById("header").innerHTML = "IP地址："+data[0][3]+"|联系人："+data[0][4]+"|token:"+data[0][1];
+	document.getElementById("text").innerHTML="";
+	for(a in data){
+	if(data[a][0]=="kf"){
+		var date = new Date(data[a][2]*1000);
+						date_time =  date.getHours() + ':'+date.getMinutes() ;
+		document.getElementById("text").innerHTML +='<div class="kf" align="right">'+data[a][5]+'<br>'+date_time+'</div>';
+	}else{
+		var date = new Date(data[a][2]*1000);
+						date_time =  date.getHours() + ':'+date.getMinutes() ;
+		document.getElementById("text").innerHTML +='<div class="kh" align="left">'+data[a][5]+'<br>'+date_time+'</div>';
+	}
+	}
+	
+$("#message").scrollTop($("#message")[0].scrollHeight);	
+}	
+})
+
+if(star==false){
+	allajax();
+	star =!star;
+}
+
+
+}
+
+}
+	
+var sends = document.getElementById("send");
+
+sends.onclick = function(){
+msg = document.getElementById("msg").value;
+function fasong(msg,now){
+$.ajax({
+			type:"post",
+			url:"kfmsg.php",
+			data:{ m: msg, t: now},
+			async:true,
+			success:function(){
+			
+$.ajax({
+type:"get",
+url:now+".js",
+async:true,
+cache:false,
+success:function(data){
+	document.getElementById("header").innerHTML = "IP地址："+data[0][3]+"|联系人："+data[0][4]+"|token:"+data[0][1];
+	data =JSON.parse(data);
+	document.getElementById("text").innerHTML="";
+	for(a in data){
+	if(data[a][0]=="kf"){
+		var date = new Date(data[a][2]*1000);
+						date_time =  date.getHours() + ':'+date.getMinutes() ;
+		document.getElementById("text").innerHTML +='<div class="kf" align="right">'+data[a][5]+'<br>'+date_time+'</div>';
+	}else{
+		var date = new Date(data[a][2]*1000);
+						date_time =  date.getHours() + ':'+date.getMinutes() ;
+		document.getElementById("text").innerHTML +='<div class="kh" align="left">'+data[a][5]+'<br>'+date_time+'</div>';
+	}
+	}
+	
+ $("#message").scrollTop($("#message")[0].scrollHeight);	
+}	
+})
+			
+			
+				
+			}});
+}
+fasong(msg,now);
+  document.getElementById("msg").value="";	
+
+
+}
+
+document.onkeydown = function (e) {
+          var theEvent = window.event || e;
+           var code = theEvent.keyCode || theEvent.which;
+           if (code == 13) {
+               $("#send").click();
+           }
+}
+
+document.getElementById("close").onclick = function(){
+
+
+	$.ajax({
+		type:"get",
+		url:"del.php?t="+now,
+		async:true
+	});	
+document.getElementById("text").innerHTML="";
+}
+
+
+
+
+</script>	
+</html>
