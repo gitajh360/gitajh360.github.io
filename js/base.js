@@ -34,7 +34,7 @@ document.getElementById("ld_con").innerHTML = ss;
 
 
 function getts(){
-$.ajax({type:"GET",url:"text.html",success:function(data){
+$.ajax({type:"GET",url:"text.html",async:false,success:function(data){
 	document.getElementById("text").innerHTML=data;
 }
 })
