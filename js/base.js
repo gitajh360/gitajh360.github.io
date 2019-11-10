@@ -56,7 +56,7 @@ $.ajax({type:"GET",url:donamess+"f="+czs[c][0]+"&n=new",dataType:"text",success:
 	op_num += "<span>"+opennum[o]+"</span>";	
 	}
 	document.getElementById("opennum").innerHTML = op_num;
-	document.getElementById("opentime").innerHTML = "刷新时间:"+data["opentime"];
+	document.getElementById("opentime").innerHTML = "刷新时间:"+data["time"];
 },error : function(data){
 	console.log(JSON.parse(data.responseText)["qishu"]);}
 }); 
