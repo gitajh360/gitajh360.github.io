@@ -26,6 +26,12 @@ body{
 	height: 36px;
 	float: right;
 }
+#tj_close{
+	margin-right: 10px;
+	width: 36px;
+	height: 36px;
+	float: right;
+}
 #opcz{
 	text-align: left;
     width:48%;
@@ -83,9 +89,40 @@ body{
 	-moz-transition: height .3s linear;	
 	-o-transition:height .3s linear;
 }
-
+#tuijian{
+	display: none;
+	width:100%;
+	max-width: 720px;
+	top:60px;
+	position: fixed;
+	z-index: 8888;
+	height: 0;
+	bottom:0;
+	background-color: #F2F3F3;
+	margin: auto;
+	left: 0;
+	right: 0;
+	box-shadow: 0px 0px 18px 8px rgba(0, 0, 0, .2);
+	border-radius: 4px 4px 0 0;
+	transition: height .3s linear;
+	-webkit-transition: height .3s linear;
+	-moz-transition: height .3s linear;	
+	-o-transition:height .3s linear;
+}
 
 #ld_title{
+	/*display: none;*/
+	padding-top:3px;
+	font-size: 18px;
+	width: 100%;
+	line-height: 40px;
+	border-radius: 4px 4px 0 0;
+	background-color: #086197;
+   /*position: absolute;	*/
+  text-align: center;
+  color: white;
+}
+#tj_title{
 	/*display: none;*/
 	padding-top:3px;
 	font-size: 18px;
@@ -104,6 +141,13 @@ body{
 	overflow:auto;
 	height: 100%;
 }
+#tj_con{
+	width:100%;
+	 top: 0;
+    bottom:0;
+	overflow:auto;
+	height: 100%;
+}
 .ld_text{
 	width:96%;
 	margin: 1%;
@@ -111,7 +155,7 @@ body{
 	border-radius: 2px;
 	text-align: center;
 	padding: 1%;
-	background-color: #E65A45;
+	background-image: linear-gradient(to top,#ff0000,#fbff04);
 	}
 	#new{
 		width: 98%;

@@ -566,6 +566,22 @@ document.getElementById("ld_close").onclick = function(){
 	setTimeout(function(){document.getElementById("longd").style.display="none";},300);
 }
 
+
+
+document.getElementById("pk").onclick = function(){
+document.getElementById("tuijian").style.display="block";
+	setTimeout(function(){document.getElementById("tuijian").style.height="100%";},100);
+}
+document.getElementById("tj_close").onclick = function(){
+	document.getElementById("tuijian").style.height="0";
+	setTimeout(function(){document.getElementById("tuijian").style.display="none";},300);
+}
+
+document.getElementById("kf").onclick = function(){alert("暂未开通！")}
+
+
+
+
 function click_lhc(){		
 	if(window.location.href.split("#")!=window.location.href){
 	document.getElementById("xglhc").click();//document.getElementById("xglhc_pt1").click();}
