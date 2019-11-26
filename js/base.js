@@ -43,12 +43,12 @@ $.ajax({type:"GET",url:"text.html",async:false,success:function(data){
 getts();
 document.getElementById("zhuye").onclick = function(){location.reload();}
 document.getElementById("reload").onclick = function(){location.reload();}
-c = 0;
+var c = 0;
 var ss = "";
 function getnew(){
 czs = [["xyft","幸运飞艇"], ["cqssc","重庆时时彩"], ["bjpk10","北京PK拾"]];
 	
-$.ajax({type:"GET",url:donamess+"f="+czs[c][0]+"&n=new",dataType:"text",success:function(data){
+$.ajax({type:"GET",url:donamess+"f="+czs[c][0]+"&n=new",dataType:"text",async:false,success:function(data){
 	data = JSON.parse(data);
 	document.getElementById("qishu").innerHTML = czs[c][1]+data["qishu"]+"期";
 	opennum = data["opennum"].split(",");
@@ -194,7 +194,8 @@ var header = document.getElementById("header");
 var nnav = "";
 header.onclick=function(event){
 	if(event.target.id=="menu_b"){
-		
+		document.getElementById("audio").play();
+		document.getElementById("audio").pause();	
 		if(nnav!=""){
 		$(nnav).hide(500);	
 		}
