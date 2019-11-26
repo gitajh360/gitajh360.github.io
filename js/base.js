@@ -43,7 +43,7 @@ $.ajax({type:"GET",url:"text.html",async:false,success:function(data){
 getts();
 document.getElementById("zhuye").onclick = function(){location.reload();}
 document.getElementById("reload").onclick = function(){location.reload();}
-c = 0;
+var c = 0;
 var ss = "";
 function getnew(){
 czs = [["xyft","幸运飞艇"], ["cqssc","重庆时时彩"], ["bjpk10","北京PK拾"]];
