@@ -48,7 +48,7 @@ var ss = "";
 function getnew(){
 czs = [["xyft","幸运飞艇"], ["cqssc","重庆时时彩"], ["bjpk10","北京PK拾"]];
 	
-$.ajax({type:"GET",url:donamess+"f="+czs[c][0]+"&n=new",dataType:"text",success:function(data){
+$.ajax({type:"GET",url:donamess+"f="+czs[c][0]+"&n=new",dataType:"text",async:false,success:function(data){
 	data = JSON.parse(data);
 	document.getElementById("qishu").innerHTML = czs[c][1]+data["qishu"]+"期";
 	opennum = data["opennum"].split(",");
