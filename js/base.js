@@ -200,24 +200,24 @@ header.onclick=function(event){
 		}
 	
 		if(nnav!=""){
-		$(nnav).hide();	
+		$(nnav).hide(500);	
 		}
 	if(document.getElementById("menu").style.display=="none"||document.getElementById("menu").style.display==""){
-		$("#menu").show();
+		$("#menu").show(500);
 		nnav = document.getElementById("menu");
-	}else if(document.getElementById("menu").style.display=="block"){
-		$("#menu").hide();
+	}else{
+		$("#menu").hide(500);
 		nnav="";
 	}
 	}else if(event.target.id=="his_b"){
 			if(nnav!=""){
-		$(nnav).hide();	
+		$(nnav).hide(500);	
 		}
 	if(document.getElementById("history").style.display=="none"||document.getElementById("history").style.display==""){
-		$("#history").show();
+		$("#history").show(500);
 		nnav = document.getElementById("history");
-	}else if(document.getElementById("history").style.display=="block"){
-		$("#history").hide();
+	}else{
+		$("#history").hide(500);
 		nnav="";
 	}
 	}	
