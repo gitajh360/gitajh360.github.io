@@ -5,8 +5,8 @@ var cl="---------------------------------------------";//分隔符号
 var word1="";//宣传语1
 var word2="";//宣传语2
 
-var donamess = "http://18.163.60.203/ground/get.php?";
-var doname_kj = "http://18.163.60.203/kj/get.php";
+var donamess = "http://18.163.60.203/get.php?";
+//var doname_kj = "http://18.163.60.203/kj/get.php";
 
 
 var pageTimer = {} ; //定义计算器全局变量
