@@ -205,7 +205,7 @@ header.onclick=function(event){
 	if(document.getElementById("menu").style.display=="none"||document.getElementById("menu").style.display==""){
 		$("#menu").show();
 		nnav = document.getElementById("menu");
-	}else{
+	}else if(document.getElementById("menu").style.display=="block"){
 		$("#menu").hide();
 		nnav="";
 	}
@@ -216,7 +216,7 @@ header.onclick=function(event){
 	if(document.getElementById("history").style.display=="none"||document.getElementById("history").style.display==""){
 		$("#history").show();
 		nnav = document.getElementById("history");
-	}else{
+	}else if(document.getElementById("history").style.display=="block"){
 		$("#history").hide();
 		nnav="";
 	}
