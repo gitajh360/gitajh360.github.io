@@ -806,20 +806,24 @@ body{
 	overflow: scroll;
 }	
 #menu_b{
-	float: left;
-	margin:7px;
-	width: 26px;
-	height: 26px;
-	background-image: url("../images/menu.png");
-	background-size: 100% 100%;
+    float: left;
+    padding: 7px;
+    width: 26px;
+    height: 26px;
+    background: url(../images/menu.png) center;
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
 }	
 #his_b{
+
+    /* margin: 7px; */
+    padding: 7px;
+    width: 26px;
+    height: 26px;
+    background: url(../images/history.png) center;
+    background-size: 26px 26px;
+	background-repeat: no-repeat;
 	float: right;
-	margin:7px;
-	width: 26px;
-	height: 26px;
-	background-image: url("../images/history.png");
-	background-size: 100% 100%;
 }	
 
 	#text{
