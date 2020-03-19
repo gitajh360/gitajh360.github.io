@@ -693,7 +693,7 @@ window.setTimeout(function(){document.getElementById("lhc").style="display:none"
 }
 	
 }
-
+/*
 var t_kj = "";
 function get_kj(){
 $.ajax({
@@ -712,3 +712,4 @@ $.ajax({
 }
 get_kj();
 window.setInterval(get_kj,1800000);
+*/
