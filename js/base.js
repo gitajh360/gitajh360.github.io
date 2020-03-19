@@ -623,9 +623,9 @@ document.getElementById("ld2").onclick = function(){
 		}
 			document.getElementById("longd").style.height="0";
 			setTimeout(function(){document.getElementById("longd").style.display="none";},300);
-
+			longd_switch = !longd_switch;
 	}
-	longd_switch = !longd_switch;
+
 
 }
 document.getElementById("ld_close").onclick = function(){
